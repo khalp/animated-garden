@@ -1,5 +1,9 @@
 package com.example.common
 
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -15,27 +19,41 @@ private val Brown = Color(0xFF742C0D)
 private val Yellow = Color(0xFFF8D314)
 
 @Composable
-fun Sunflower() {
-    Canvas(Modifier.size(100.dp)) {
-        drawSunflower()
+fun AnimatedSizeSunflower() {
+    Sketch(
+        modifier = Modifier.size(100.dp),
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 800, delayMillis = 50, easing = LinearOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    ) { sizePct ->
+        drawSunflower(sizePct = sizePct)
     }
 }
 
-fun DrawScope.drawSunflower() {
-    drawPetals()
-    drawCenter()
+@Composable
+fun Sunflower() {
+    Canvas(Modifier.size(100.dp)) {
+        drawSunflower(sizePct = 1f)
+    }
 }
 
-fun DrawScope.drawCenter() {
-    val radius = 20f
+fun DrawScope.drawSunflower(sizePct: Float) {
+    drawPetals(sizePct)
+    drawCenter(sizePct)
+}
+
+fun DrawScope.drawCenter(sizePct: Float) {
+    val radius = 20f * sizePct
 
     drawCircle(color = Brown, radius = radius, center = center)
 }
 
-fun DrawScope.drawPetals() {
+fun DrawScope.drawPetals(sizePct: Float) {
     val numPetals = 8
     var angle = 0f
-    val size = Size(width = 30f, height = 75f)
+    val size = Size(width = 30f, height = 75f) * sizePct
 
     repeat(numPetals) {
         rotate(angle) {

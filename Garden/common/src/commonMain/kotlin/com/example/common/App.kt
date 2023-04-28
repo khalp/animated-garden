@@ -19,8 +19,9 @@ fun MyGarden() {
         modifier = Modifier.fillMaxSize(),
         columns = GridCells.Adaptive(100.dp)
     ) {
-        items(8) {
-            Sunflower()
+        repeat(8) {
+            item { Sunflower() }
+            item { AnimatedSizeSunflower() }
         }
     }
 }
