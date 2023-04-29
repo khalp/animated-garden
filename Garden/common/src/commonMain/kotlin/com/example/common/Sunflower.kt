@@ -16,6 +16,35 @@ private val Brown = Color(0xFF742C0D)
 private val Yellow = Color(0xFFF8D314)
 
 @Composable
+fun AnimatedEverythingSunflower() {
+    Sketch(
+        modifier = Modifier.size(100.dp),
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            tween(durationMillis = 800, delayMillis = 50, easing = LinearOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    ) { animationState ->
+        drawSunflower(
+            sizePct = animationState / 360f,
+            rotation = animationState,
+            color = Color.hsv(hue = animationState, saturation = 1f, value = 1f)
+        )
+    }
+}
+
+@Composable
+fun AnimatedPetalColorAndRotationSunflower() {
+    Sketch(
+        modifier = Modifier.size(100.dp),
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(tween(durationMillis = 3000, easing = LinearEasing))
+    ) { animationState ->
+        drawSunflower(hue = animationState, rotation = animationState)
+    }
+}
+
+@Composable
 fun AnimatedPetalColorSunflower() {
     Sketch(
         modifier = Modifier.size(100.dp),
