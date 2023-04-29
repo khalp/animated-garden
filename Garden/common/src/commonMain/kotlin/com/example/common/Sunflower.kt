@@ -15,6 +15,16 @@ import androidx.compose.ui.unit.dp
 private val Brown = Color(0xFF742C0D)
 private val Yellow = Color(0xFFF8D314)
 
+@Composable
+fun AnimatedPetalColorSunflower() {
+    Sketch(
+        modifier = Modifier.size(100.dp),
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(tween(durationMillis = 3000, easing = LinearEasing))
+    ) { hue ->
+        drawSunflower(hue = hue)
+    }
+}
 
 @Composable
 fun AnimatedColorSunflower() {
@@ -59,8 +69,8 @@ fun Sunflower() {
     }
 }
 
-fun DrawScope.drawSunflower(sizePct: Float = 1f, rotation: Float = 0f, color: Color = Yellow) {
-    drawPetals(sizePct, rotation, color)
+fun DrawScope.drawSunflower(sizePct: Float = 1f, rotation: Float = 0f, color: Color = Yellow, hue: Float? = null) {
+    drawPetals(sizePct, rotation, color, hue)
     drawCenter(sizePct)
 }
 
@@ -70,15 +80,16 @@ fun DrawScope.drawCenter(sizePct: Float) {
     drawCircle(color = Brown, radius = radius, center = center)
 }
 
-fun DrawScope.drawPetals(sizePct: Float, rotation: Float, color: Color) {
+fun DrawScope.drawPetals(sizePct: Float, rotation: Float, color: Color, hue: Float?) {
     val numPetals = 8
     var angle = rotation
     val size = Size(width = 30f, height = 75f) * sizePct
 
-    repeat(numPetals) {
+    repeat(numPetals) { petal ->
         rotate(angle) {
             drawOval(
-                color = color,
+                color = hue?.let { Color.hsv(hue = (hue + petal * 10f).mod(360f), saturation = 1f, value = 1f) }
+                    ?: color,
                 topLeft = Offset(center.x - size.width / 2, center.y),
                 size = size
             )
