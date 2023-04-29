@@ -22,6 +22,7 @@ fun MyGarden() {
         repeat(8) {
             item { Sunflower() }
             item { AnimatedSizeSunflower() }
+            item { AnimatedRotationSunflower() }
         }
     }
 }
