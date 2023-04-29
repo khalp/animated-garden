@@ -2,6 +2,7 @@ import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.example.common.MyGarden
+import com.example.common.complexGreen
 import com.example.common.greenGradient
 import org.jetbrains.skia.Data
 import org.jetbrains.skia.RuntimeEffect
@@ -21,7 +22,7 @@ fun main() = application {
             // Pass in iTime
             dataBuffer.putFloat(8, time.value)
 
-            val shaderEffect = RuntimeEffect.makeForShader(greenGradient)
+            val shaderEffect = RuntimeEffect.makeForShader(complexGreen)
             val shader = shaderEffect.makeShader(
                 uniforms = Data.makeFromBytes(dataBuffer.array()),
                 children = null,

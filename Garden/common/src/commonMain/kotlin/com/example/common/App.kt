@@ -35,6 +35,29 @@ val greenGradient = """
             return vec4(r, g, b, 1.0);
         }
     """
+
+// Source: https://twitter.com/notargs/status/1250468645030858753
+val complexGreen = """
+        uniform float2 iResolution;
+        uniform float iTime;
+        
+        float f(vec3 p) {
+            p.z -= iTime * 10.;
+            float a = p.z * .1;
+            p.xy *= mat2(cos(a), sin(a), -sin(a), cos(a));
+            return .1 - length(cos(p.xy) + sin(p.yz));
+        }
+        
+        half4 main(vec2 fragcoord) { 
+            vec3 d = .5 - fragcoord.xy1 / iResolution.y;
+            vec3 p=vec3(0);
+            for (int i = 0; i < 32; i++) {
+              p += f(p) * d;
+            }
+            return ((sin(p) + vec3(0.95, 3.725, 2.05)) / length(p)).xyz1;
+        }
+        """
+
 @Composable
 fun MyGarden(backgroundBrush: ((Size, AnimationState<Float, AnimationVector1D>) -> ShaderBrush)? = null) {
     val backgroundBrushTime = remember { AnimationState(0f) }

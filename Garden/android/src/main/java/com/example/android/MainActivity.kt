@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.graphics.ShaderBrush
 import com.example.common.MyGarden
+import com.example.common.complexGreen
 import com.example.common.greenGradient
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme {
                 MyGarden { size, animationState ->
-                    val shader = RuntimeShader(greenGradient)
+                    val shader = RuntimeShader(complexGreen)
                     shader.setFloatUniform("iTime", animationState.value)
                     shader.setFloatUniform("iResolution", size.width, size.height)
 
