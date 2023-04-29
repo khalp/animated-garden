@@ -25,6 +25,8 @@ fun MyGarden() {
             item { AnimatedRotationSunflower() }
             item { AnimatedColorSunflower() }
             item { AnimatedPetalColorSunflower() }
+            item { AnimatedPetalColorAndRotationSunflower() }
+            item { AnimatedEverythingSunflower() }
         }
     }
 }
