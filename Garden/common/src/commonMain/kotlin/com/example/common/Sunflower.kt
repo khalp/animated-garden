@@ -94,7 +94,7 @@ fun AnimatedSizeSunflower() {
 @Composable
 fun Sunflower() {
     Canvas(Modifier.size(100.dp)) {
-        drawSunflower(sizePct = 1f)
+        drawSunflower()
     }
 }
 
