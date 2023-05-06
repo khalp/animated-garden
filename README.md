@@ -3,7 +3,7 @@
 an exploration of [compose animation](https://developer.android.com/jetpack/compose/animation) &amp; [compose multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) based on the "composable sheep" talk series
 
 <p align="center">
-<img src="screenshots/animated_garden.gif" width=80%/>
+<img src="screenshots/animated_garden.gif" width=75% height=auto/>
 </p>
 
 original "composable sheep" talks by nicole and tasha:
@@ -30,16 +30,16 @@ this project (and the accompanying [blog series](https://devblogs.microsoft.com/
 
 | concept | exercise | example |
 |:---:|:---:|:---:|
-| custom graphics with `Canvas` | draw a sunflower! | <img src="screenshots/sunflower.png" width=100px/> |
-| basic & complex compose animations | animate a sunflower | <img src="screenshots/animated_sunflower.gif" width=100px/> |
-| background shaders for desktop and mobile | grow a grassy background! | <img src="screenshots/grassy_background.gif" width=100px/> |
+| custom graphics with `Canvas` | draw a sunflower | <img src="screenshots/sunflower.png" width=100px height=auto/> |
+| basic & complex compose animations | animate a sunflower | <img src="screenshots/animated_sunflower.gif" width=100px height=auto/> |
+| background shaders for desktop and mobile | grow a grassy background | <img src="screenshots/grassy_background.gif" width=100px height=auto/> |
 
 ## draw a sunflower 🌻
 
 learn to create custom graphics with `Canvas`
 
 <p>
-<img src="screenshots/draw_a_sunflower.png" width=80%/>
+<img src="screenshots/draw_a_sunflower.png" width=75% height=auto/>
 </p>
 
 documentation: [Graphics In Compose](https://developer.android.com/jetpack/compose/graphics/draw/overview)
@@ -54,7 +54,7 @@ source code:
 familiarize yourself with compose animation APIs by animating different properties of the sunflower (size, angle, color...)
 
 <p>
-<img src="screenshots/animate_a_sunflower.gif" width=80%/>
+<img src="screenshots/animate_a_sunflower.gif" width=75% height=auto/>
 </p>
 
 documentation:
@@ -76,7 +76,7 @@ source code:
 learn how to implement background shaders on desktop and mobile
 
 <p>
-<img src="screenshots/add_a_background_shader.gif" width=80%/>
+<img src="screenshots/add_a_background_shader.gif" width=75% height=auto/>
 </p>
 
 documentation:
